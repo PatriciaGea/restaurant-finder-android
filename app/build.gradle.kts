@@ -6,11 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.restaurant_finder"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.example.restaurant_finder"
