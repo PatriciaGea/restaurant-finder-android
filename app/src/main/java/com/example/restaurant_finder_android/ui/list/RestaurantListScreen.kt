@@ -125,7 +125,7 @@ fun RestaurantListScreen(
                             filters = uiState.filters,
                             onClick = { onRestaurantClick(restaurant, uiState.filters) }
                         )
-                        Spacer(modifier = Modifier.height(12.dp))
+                        Spacer(modifier = Modifier.height(16.dp))
                     }
                 }
             }
@@ -194,8 +194,9 @@ fun RestaurantCard(
         modifier = Modifier
             .padding(horizontal = 16.dp)
             .width(343.dp)
+
             .shadow(
-                elevation = 4.dp,
+                elevation = 6.dp,
                 shape = RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp),
                 ambientColor = Color(0x1A000000),
                 spotColor = Color(0x1A000000)
@@ -210,7 +211,7 @@ fun RestaurantCard(
                 contentDescription = restaurant.name,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(120.dp),
+                    .height(132.dp),
                 contentScale = ContentScale.Crop
             )
             Column(
