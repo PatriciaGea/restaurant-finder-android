@@ -83,7 +83,7 @@ fun RestaurantDetailScreen(
                 .defaultMinSize(minHeight = 144.dp),
             shape = RoundedCornerShape(12.dp),
             elevation = CardDefaults.cardElevation(
-                defaultElevation = 2.dp
+                defaultElevation = 4.dp
             ),
             colors = CardDefaults.cardColors(
                 containerColor = Color.White
