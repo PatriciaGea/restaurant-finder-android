@@ -5,17 +5,17 @@ plugins {
 }
 
 android {
-    namespace = "com.example.restaurant_finder"
+    namespace = "com.example.restaurant_finder_android"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.example.restaurant_finder"
+        applicationId = "com.example.restaurant_finder_android"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitParser"
     }
 
     buildTypes {
