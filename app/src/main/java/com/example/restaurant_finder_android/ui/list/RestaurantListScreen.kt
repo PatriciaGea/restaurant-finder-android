@@ -106,7 +106,7 @@ fun RestaurantListScreen(
 
                     item {
                         LazyRow(
-                            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
+                            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 20.dp),
                             horizontalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
                             items(uiState.filters, key = { it.id }) { filter ->
@@ -253,8 +253,11 @@ fun RestaurantCard(
                     Text(
                         text = tagNames,
                         color = SubtitleGray,
-                        fontSize = 12.sp
-                    )
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 11.sp,
+                        lineHeight = 16.sp,
+                        letterSpacing = 0.sp)
+
                 }
                 Spacer(modifier = Modifier.height(4.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
