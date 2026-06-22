@@ -90,7 +90,8 @@ fun RestaurantListScreen(
                                     .background(
                                         Brush.verticalGradient(
                                             colors = listOf(
-                                                Color(0xFFF8F8F8),
+                                                Color(0xFFFCFCFC),
+                                                Color(0xFFFCFCFC),
                                                 Color(0x00F8F8F8)
                                             )
                                         )
