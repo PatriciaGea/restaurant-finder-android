@@ -26,6 +26,7 @@ import coil.compose.AsyncImage
 import com.example.restaurant_finder_android.data.Filter
 import com.example.restaurant_finder_android.data.Restaurant
 import androidx.compose.foundation.Image
+import androidx.compose.material.icons.rounded.Star
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.painterResource
 import com.example.restaurant_finder_android.R
@@ -225,10 +226,10 @@ fun RestaurantCard(
                     )
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Icon(
-                            imageVector = Icons.Filled.Star,
+                            imageVector = Icons.Rounded.Star,
                             contentDescription = null,
                             tint = Color(0xFFF9CA24),
-                            modifier = Modifier.size(12.dp)
+                            modifier = Modifier.size(19.dp)
                         )
                         Spacer(modifier = Modifier.width(3.dp))
                         Text(
