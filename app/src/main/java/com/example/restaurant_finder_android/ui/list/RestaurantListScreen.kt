@@ -33,6 +33,7 @@ import com.example.restaurant_finder_android.R
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 
+
 val DarkText = Color(0xFF1F2B2E)
 val SubtitleGray = Color(0xFF999999)
 val BackgroundGray = Color(0xFFF8F8F8)
@@ -169,8 +170,11 @@ private fun FilterChip(
         Text(
             text = filter.name,
             color = textColor,
-            fontWeight = FontWeight.Medium,
-            fontSize = 14.sp,
+            fontFamily = FontFamily(Font(R.font.poppins)),
+            fontWeight = FontWeight.Bold,
+            fontSize = 13.sp,
+            lineHeight = 20.sp,
+            letterSpacing = 0.sp,
             maxLines = 1
         )
     }
