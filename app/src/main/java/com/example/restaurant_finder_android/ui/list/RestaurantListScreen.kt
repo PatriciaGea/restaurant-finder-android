@@ -25,6 +25,9 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.restaurant_finder_android.data.Filter
 import com.example.restaurant_finder_android.data.Restaurant
+import androidx.compose.foundation.Image
+import androidx.compose.ui.res.painterResource
+import com.example.restaurant_finder_android.R
 
 val DarkText = Color(0xFF1F2B2E)
 val SubtitleGray = Color(0xFF999999)
@@ -68,14 +71,15 @@ fun RestaurantListScreen(
                                     .height(98.dp)
                                     .background(Color.White)
                             ) {
-                                Text(
-                                    text = "U·",
-                                    fontSize = 36.sp,
-                                    fontWeight = FontWeight.Black,
-                                    color = DarkText,
+                                Image(
+                                    painter = painterResource(id = R.drawable.header),
+                                    contentDescription = "Munchies logo",
                                     modifier = Modifier
-                                        .align(Alignment.BottomStart)
-                                        .padding(start = 16.dp, bottom = 16.dp)
+                                        .padding(start = 16.dp, top = 44.dp)
+                                        .width(55.dp)
+                                        .height(54.dp)
+                                        .align(Alignment.TopStart),
+                                    contentScale = ContentScale.Fit
                                 )
                             }
                             Spacer(
