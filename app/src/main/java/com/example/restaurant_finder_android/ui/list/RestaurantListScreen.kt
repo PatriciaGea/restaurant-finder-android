@@ -270,7 +270,7 @@ fun RestaurantCard(
                     Spacer(modifier = Modifier.width(4.dp))
                     Text(
                         text = "${restaurant.deliveryTimeMinutes} mins",
-                        color = SubtitleGray,
+                        color = Color(0xFF50555C),
                         fontSize = 12.sp
                     )
                 }
