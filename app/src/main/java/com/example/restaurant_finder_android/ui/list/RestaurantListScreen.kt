@@ -249,7 +249,7 @@ fun RestaurantCard(
                     }
                 }
                 if (tagNames.isNotEmpty()) {
-                    Spacer(modifier = Modifier.height(2.dp))
+                    Spacer(modifier = Modifier.height(1.dp))
                     Text(
                         text = tagNames,
                         color = SubtitleGray,
@@ -259,7 +259,7 @@ fun RestaurantCard(
                         letterSpacing = 0.sp)
 
                 }
-                Spacer(modifier = Modifier.height(4.dp))
+                Spacer(modifier = Modifier.height(1.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
                         imageVector = Icons.Filled.Schedule,
