@@ -29,6 +29,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.painterResource
 import com.example.restaurant_finder_android.R
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 
 val DarkText = Color(0xFF1F2B2E)
 val SubtitleGray = Color(0xFF999999)
@@ -225,15 +227,18 @@ fun RestaurantCard(
                         Icon(
                             imageVector = Icons.Filled.Star,
                             contentDescription = null,
-                            tint = SelectedOrange,
-                            modifier = Modifier.size(14.dp)
+                            tint = Color(0xFFF9CA24),
+                            modifier = Modifier.size(12.dp)
                         )
                         Spacer(modifier = Modifier.width(3.dp))
                         Text(
                             text = restaurant.rating.toString(),
                             color = DarkText,
-                            fontWeight = FontWeight.Medium,
-                            fontSize = 13.sp
+                            fontFamily = FontFamily(Font(R.font.inter_bold)),
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 10.sp,
+                            lineHeight = 10.sp,
+                            letterSpacing = 0.sp,
                         )
                     }
                 }
