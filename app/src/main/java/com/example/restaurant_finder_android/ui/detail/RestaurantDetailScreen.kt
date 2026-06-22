@@ -114,21 +114,12 @@ fun RestaurantDetailScreen(
                     )
                     else -> {
                         val isOpen = uiState.isOpen == true
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Box(
-                                modifier = Modifier
-                                    .size(10.dp)
-                                    .clip(CircleShape)
-                                    .background(if (isOpen) PositiveGreen else NegativeRed)
-                            )
-                            Spacer(modifier = Modifier.width(6.dp))
-                            Text(
-                                text = if (isOpen) "Open" else "Closed",
-                                color = if (isOpen) PositiveGreen else NegativeRed,
-                                fontWeight = FontWeight.SemiBold,
-                                fontSize = 16.sp
-                            )
-                        }
+                        Text(
+                            text = if (isOpen) "Open" else "Closed",
+                            color = if (isOpen) PositiveGreen else NegativeRed,
+                            fontWeight = FontWeight.SemiBold,
+                            fontSize = 18.sp
+                        )
                     }
                 }
             }
