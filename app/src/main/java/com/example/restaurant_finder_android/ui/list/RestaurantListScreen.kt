@@ -190,21 +190,20 @@ fun RestaurantCard(
         .mapNotNull { id -> filters.find { it.id == id }?.name }
         .joinToString(" · ")
 
-    Box(
+    Card(
+        onClick = onClick,
         modifier = Modifier
             .padding(horizontal = 16.dp)
             .width(343.dp)
-
-            .shadow(
-                elevation = 6.dp,
-                shape = RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp),
-                ambientColor = Color(0x1A000000),
-                spotColor = Color(0x1A000000)
-            )
-            .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
-            .background(Color.White)
-            .clickable { onClick() }
-    ) {
+            .height(196.dp),
+        shape = RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 3.dp
+        ),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White
+        )
+    )  {
         Column {
             AsyncImage(
                 model = restaurant.imageUrl,
