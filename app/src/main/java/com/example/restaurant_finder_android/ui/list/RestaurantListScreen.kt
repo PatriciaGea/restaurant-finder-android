@@ -26,6 +26,7 @@ import coil.compose.AsyncImage
 import com.example.restaurant_finder_android.data.Filter
 import com.example.restaurant_finder_android.data.Restaurant
 import androidx.compose.foundation.Image
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.painterResource
 import com.example.restaurant_finder_android.R
 
@@ -82,10 +83,18 @@ fun RestaurantListScreen(
                                     contentScale = ContentScale.Fit
                                 )
                             }
-                            Spacer(
+                            Box(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .height(9.dp)
+                                    .background(
+                                        Brush.verticalGradient(
+                                            colors = listOf(
+                                                Color(0xFFF8F8F8),
+                                                Color(0x00F8F8F8)
+                                            )
+                                        )
+                                    )
                             )
                         }
                     }
