@@ -1,11 +1,13 @@
 package com.example.restaurant_finder_android.ui.detail
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -57,19 +59,20 @@ fun RestaurantDetailScreen(
             contentScale = ContentScale.Crop
         )
 
-        IconButton(
-            onClick = onBack,
+        Box(
             modifier = Modifier
                 .padding(start = 16.dp, top = 40.dp)
                 .size(36.dp)
                 .align(Alignment.TopStart)
-                .background(Color(0x40000000), shape = RoundedCornerShape(50))
+                .clickable { onBack() }
         ) {
             Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                imageVector = Icons.Filled.KeyboardArrowDown,
                 contentDescription = "Back",
-                tint = Color.White,
-                modifier = Modifier.size(18.dp)
+                tint = Color(0xFF1F2B2E),
+                modifier = Modifier
+                    .size(63.dp)
+                    .align(Alignment.Center)
             )
         }
 
