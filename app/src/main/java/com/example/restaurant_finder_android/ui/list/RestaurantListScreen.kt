@@ -73,16 +73,16 @@ fun RestaurantListScreen(
                             Box(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .height(98.dp)
+                                    .height(89.dp)
                                     .background(Color.White)
                             ) {
                                 Image(
                                     painter = painterResource(id = R.drawable.header),
                                     contentDescription = "Munchies logo",
                                     modifier = Modifier
-                                        .padding(start = 16.dp, top = 44.dp)
-                                        .width(55.dp)
-                                        .height(54.dp)
+                                        .padding(start = 16.dp, top = 39.dp)
+                                        .width(56.dp)
+                                        .height(55.dp)
                                         .align(Alignment.TopStart),
                                     contentScale = ContentScale.Fit
                                 )
