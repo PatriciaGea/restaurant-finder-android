@@ -148,7 +148,7 @@ private fun FilterChip(
             .width(144.dp)
             .height(48.dp)
             .shadow(
-                elevation = 2.dp,
+                elevation = 6.dp,
                 shape = RoundedCornerShape(50),
                 ambientColor = Color(0x1A000000),
                 spotColor = Color(0x1A000000)

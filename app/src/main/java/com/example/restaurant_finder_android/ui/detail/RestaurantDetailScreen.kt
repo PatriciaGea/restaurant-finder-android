@@ -76,19 +76,19 @@ fun RestaurantDetailScreen(
             )
         }
 
-        Box(
+        Card(
             modifier = Modifier
                 .padding(start = 16.dp, top = 175.dp)
                 .width(343.dp)
-                .defaultMinSize(minHeight = 144.dp)
-                .shadow(
-                    elevation = 4.dp,
-                    shape = RoundedCornerShape(12.dp),
-                    ambientColor = Color(0x1A000000),
-                    spotColor = Color(0x1A000000)
-                )
-                .background(Color.White, shape = RoundedCornerShape(12.dp))
-        ) {
+                .defaultMinSize(minHeight = 144.dp),
+            shape = RoundedCornerShape(12.dp),
+            elevation = CardDefaults.cardElevation(
+                defaultElevation = 2.dp
+            ),
+            colors = CardDefaults.cardColors(
+                containerColor = Color.White
+            )
+        )  {
             Column(modifier = Modifier.padding(16.dp)) {
                 Text(
                     text = restaurant.name,
