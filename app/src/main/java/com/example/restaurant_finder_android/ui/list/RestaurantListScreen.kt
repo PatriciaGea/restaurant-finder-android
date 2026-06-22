@@ -264,7 +264,7 @@ fun RestaurantCard(
                     Icon(
                         imageVector = Icons.Filled.Schedule,
                         contentDescription = null,
-                        tint = NegativeRed,
+                        tint = Color(0xFFFF5252),
                         modifier = Modifier.size(12.dp)
                     )
                     Spacer(modifier = Modifier.width(4.dp))
