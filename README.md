@@ -160,7 +160,7 @@ The project uses `compileSdk = 37` to satisfy `androidx.core:core-ktx:1.19.0` re
 ---
 # ✦ Author
 
-**Patrícia Gea Rodrigues** • Android Developer
+### Patrícia Gea Rodrigues • Android Developer
 
 #### https://patriciageadev.vercel.app/  Portfolio
 #### https://www.linkedin.com/in/patriciageadev/ Linkedin
