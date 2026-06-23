@@ -10,13 +10,13 @@ modern Android architecture. <img src="screenshot/android_logo.png" width="200" 
 
 ---
 
-#  ✦ Screenshots
+# ✦ Screenshots
 
 <img src="screenshot/screenshot.png" width="165">   <img src="screenshot/gif.GIF" width="200"> 
 
 ---
 
-#  ✦ Project Objective
+# ✦ Project Objective
 
 Build a mobile application for Restaurant Delivery, allowing users to:
 
@@ -26,7 +26,7 @@ Build a mobile application for Restaurant Delivery, allowing users to:
 
 ---
 
-#  ✦ Tech Stack
+# ✦ Tech Stack
 
 | Technology | Purpose |
 |---|---|
@@ -40,10 +40,13 @@ Build a mobile application for Restaurant Delivery, allowing users to:
 | **ViewModel + StateFlow** | UI state management |
 | **Kotlin Coroutines** | Asynchronous programming |
 | **Material3** | UI components and theming |
+| **Android Studio** | IDE for development, emulator and debugging |
+| **Samsung Galaxy A34 (SM-A346B)** | Physical device used for testing and UI validation |
+| **Claude.ai** | Used as an AI learning assistant throughout development, for understanding concepts, debugging errors and exploring Android best practices |
 
 ---
 
-#  ✦ Architecture
+# ✦ Architecture
 
 The project follows **MVVM (Model-View-ViewModel)** architecture with a clean separation of concerns:
 
@@ -52,8 +55,8 @@ app/
 ├── data/
 │   ├── Models.kt               # Data classes (Restaurant, Filter, OpenStatus)
 │   ├── RestaurantApi.kt        # Retrofit API interface
-│   ├── NetworkModule.kt        # Retrofit singleton configuration
-│   └── RestaurantRepository.kt # Data layer abstraction
+│   ├── NetworkModule.kt        # Sets up the API and JSON converter
+│   └── RestaurantRepository.kt # Fetches and organizes data from the API
 └── ui/
     ├── list/
     │   ├── RestaurantListScreen.kt    # List UI + Filter chips
@@ -65,18 +68,18 @@ app/
 
 ---
 
-#  ✦ Features
+# ✦ Features
 
 - **Restaurant List** = Displays all restaurants fetched from the API with image, name, tags, delivery time and rating
 - **Horizontal Filter Chips** = Filter icons and names fetched from the API (not hardcoded). Multiple filters can be selected simultaneously
 - **Real-time Open/Closed Status** = Each restaurant's status is fetched live when opening the detail screen
 - **Detail Screen** = Full-screen banner image, restaurant name, category tags and open/closed status
-- **Error Handling** = Graceful error states with user-friendly messages
-- **Loading States** = Visual feedback while data is being fetched
+- **Error Handling** = Error states with user messages
+- **Loading States** = Visual feedback while data is being fetched (spinner material3)
 
 ---
 
-#  ✦ API
+# ✦ API
 
 Base URL: `https://food-delivery.umain.io/api/v1/`
 
@@ -88,19 +91,19 @@ Base URL: `https://food-delivery.umain.io/api/v1/`
 
 ---
 
-#  ✦ Design
+# ✦ Design
 
 The UI is based on a **Figma design** provided by Umain, implementing:
 
 - Custom color palette
-- Pixel-accurate card dimensions (`343 x 196dp`) with Material3 elevation
+- Cards following Figma specs with Material3 elevation and dynamic height **adapted for content**
 - Custom fonts: **Inter** (rating) and **Poppins** (filter chips)
 - Gradient header separator
 - Umain logo rendered as a Vector Drawable
 
 ---
 
-#  ✦ How to Run
+# ✦ How to Run
 ### Prerequisites
 
 - Android Studio **Hedgehog** or later
@@ -128,7 +131,7 @@ git clone https://github.com/PatriciaGea/restaurant-finder-android.git
 
 ---
 
-#  ✦ Concepts Practiced
+# ✦ Concepts Practiced
 
 - **Jetpack Compose** declarative UI with `LazyColumn`, `LazyRow`, and `Box` layouts
 - **StateFlow** for reactive UI state, the screen automatically redraws when data changes
@@ -149,13 +152,13 @@ git clone https://github.com/PatriciaGea/restaurant-finder-android.git
 The API returns `filterIds` inside each restaurant, but filter details (name, icon) require separate calls. The solution was to collect all unique filter IDs across all restaurants and fetch them **in parallel** using Kotlin's `async`/`awaitAll`, reducing load time significantly compared to sequential calls.
 
 ### Navigation with Complex Objects
-Passing a `Restaurant` object and its `List<Filter>` between screens required serializing them to JSON using Kotlinx Serialization and URL-encoding them as navigation arguments, a pattern that mirrors real-world production approaches.
+To pass restaurant data between screens, the app serializes objects to JSON and sends them as navigation arguments
 
 ### Dependency Compatibility
 The project uses `compileSdk = 37` to satisfy `androidx.core:core-ktx:1.19.0` requirements, while keeping `targetSdk = 36` for runtime behavior stability. The Retrofit Kotlinx Serialization converter was migrated from the deprecated `com.jakewharton.retrofit` package to the official `com.squareup.retrofit2:converter-kotlinx-serialization`.
 
 ---
-#  ✦ Author
+# ✦ Author
 
 **Patrícia Gea Rodrigues** • Android Developer
 
@@ -167,3 +170,13 @@ The project uses `compileSdk = 37` to satisfy `androidx.core:core-ktx:1.19.0` re
 
 
 *Built as part of the Umain Mobile internship Test*
+
+## 🔗 Other Projects
+
+Check out more of my mobile projects :
+
+#### https://github.com/PatriciaGea/business-card-patriciagea
+#### https://github.com/PatriciaGea/plant-app-kotlin
+#### https://github.com/PatriciaGea/app-android
+
+Thank You
