@@ -10,13 +10,13 @@ modern Android architecture. <img src="screenshot/android_logo.png" width="200" 
 
 ---
 
-##  ✦ Screenshots
+#  ✦ Screenshots
 
 <img src="screenshot/screenshot.png" width="165">   <img src="screenshot/gif.GIF" width="200"> 
 
 ---
 
-###  ✦ Project Objective
+#  ✦ Project Objective
 
 Build a mobile application for Restaurant Delivery, allowing users to:
 
@@ -26,7 +26,7 @@ Build a mobile application for Restaurant Delivery, allowing users to:
 
 ---
 
-###  ✦ Tech Stack
+#  ✦ Tech Stack
 
 | Technology | Purpose |
 |---|---|
@@ -43,7 +43,7 @@ Build a mobile application for Restaurant Delivery, allowing users to:
 
 ---
 
-###  ✦ Architecture
+#  ✦ Architecture
 
 The project follows **MVVM (Model-View-ViewModel)** architecture with a clean separation of concerns:
 
@@ -65,7 +65,7 @@ app/
 
 ---
 
-###  ✦ Features
+#  ✦ Features
 
 - **Restaurant List** = Displays all restaurants fetched from the API with image, name, tags, delivery time and rating
 - **Horizontal Filter Chips** = Filter icons and names fetched from the API (not hardcoded). Multiple filters can be selected simultaneously
@@ -76,7 +76,7 @@ app/
 
 ---
 
-###  ✦ API
+#  ✦ API
 
 Base URL: `https://food-delivery.umain.io/api/v1/`
 
@@ -88,7 +88,7 @@ Base URL: `https://food-delivery.umain.io/api/v1/`
 
 ---
 
-###  ✦ Design
+#  ✦ Design
 
 The UI is based on a **Figma design** provided by Umain, implementing:
 
@@ -100,7 +100,7 @@ The UI is based on a **Figma design** provided by Umain, implementing:
 
 ---
 
-###  ✦ How to Run
+#  ✦ How to Run
 ### Prerequisites
 
 - Android Studio **Hedgehog** or later
@@ -128,7 +128,7 @@ git clone https://github.com/PatriciaGea/restaurant-finder-android.git
 
 ---
 
-###  ✦ Concepts Practiced
+#  ✦ Concepts Practiced
 
 - **Jetpack Compose** declarative UI with `LazyColumn`, `LazyRow`, and `Box` layouts
 - **StateFlow** for reactive UI state, the screen automatically redraws when data changes
@@ -143,7 +143,7 @@ git clone https://github.com/PatriciaGea/restaurant-finder-android.git
 
 ---
 
-### ✦ Challenges & Learnings
+# ✦ Challenges & Learnings
 
 ### Parallel Filter Fetching
 The API returns `filterIds` inside each restaurant, but filter details (name, icon) require separate calls. The solution was to collect all unique filter IDs across all restaurants and fetch them **in parallel** using Kotlin's `async`/`awaitAll`, reducing load time significantly compared to sequential calls.
@@ -155,7 +155,7 @@ Passing a `Restaurant` object and its `List<Filter>` between screens required se
 The project uses `compileSdk = 37` to satisfy `androidx.core:core-ktx:1.19.0` requirements, while keeping `targetSdk = 36` for runtime behavior stability. The Retrofit Kotlinx Serialization converter was migrated from the deprecated `com.jakewharton.retrofit` package to the official `com.squareup.retrofit2:converter-kotlinx-serialization`.
 
 ---
-###  ✦ Author
+#  ✦ Author
 
 **Patrícia Gea Rodrigues** • Android Developer
 
