@@ -10,7 +10,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Schedule
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -190,20 +189,20 @@ fun RestaurantCard(
         .mapNotNull { id -> filters.find { it.id == id }?.name }
         .joinToString(" · ")
 
-    Card(
-        onClick = onClick,
+    Box(
         modifier = Modifier
             .padding(horizontal = 16.dp)
             .width(343.dp)
-            .height(196.dp),
-        shape = RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 3.dp
-        ),
-        colors = CardDefaults.cardColors(
-            containerColor = Color.White
-        )
-    )  {
+            .shadow(
+                elevation = 6.dp,
+                shape = RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp),
+                ambientColor = Color(0x1A000000),
+                spotColor = Color(0x1A000000)
+            )
+            .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
+            .background(Color.White)
+            .clickable { onClick() }
+    ) {
         Column {
             AsyncImage(
                 model = restaurant.imageUrl,
@@ -243,22 +242,22 @@ fun RestaurantCard(
                             fontWeight = FontWeight.Bold,
                             fontSize = 10.sp,
                             lineHeight = 10.sp,
-                            letterSpacing = 0.sp,
+                            letterSpacing = 0.sp
                         )
                     }
                 }
                 if (tagNames.isNotEmpty()) {
-                    Spacer(modifier = Modifier.height(0.dp))
+                    Spacer(modifier = Modifier.height(1.dp))
                     Text(
                         text = tagNames,
                         color = SubtitleGray,
                         fontWeight = FontWeight.Bold,
                         fontSize = 11.sp,
                         lineHeight = 16.sp,
-                        letterSpacing = 0.sp)
-
+                        letterSpacing = 0.sp
+                    )
                 }
-                Spacer(modifier = Modifier.height(0.dp))
+                Spacer(modifier = Modifier.height(1.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
                         imageVector = Icons.Filled.Schedule,

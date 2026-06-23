@@ -6,10 +6,10 @@
 
 ##  ✦ Screenshots
 
-> _Add a screenshot of the Restaurant List screen here_
+
 > `![Restaurant List](screenshots/screenshot.png)`
 
-> _Add a GIF showing filter selection and navigation to detail here_
+
 > `![App Demo](screenshots/demo.gif)`
 
 ---
@@ -164,4 +164,4 @@ The project uses `compileSdk = 37` to satisfy `androidx.core:core-ktx:1.19.0` re
 ---
 
 
-*Built as part of the Umain Mobile Work Test*
+*Built as part of the Umain Mobile internship Test*
