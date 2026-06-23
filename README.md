@@ -162,21 +162,17 @@ The project uses `compileSdk = 37` to satisfy `androidx.core:core-ktx:1.19.0` re
 
 **Patrícia Gea Rodrigues** • Android Developer
 
-#### https://patriciageadev.vercel.app/
-#### https://www.linkedin.com/in/patriciageadev/
+#### https://patriciageadev.vercel.app/  Portfolio
+#### https://www.linkedin.com/in/patriciageadev/ Linkedin
 #### patricia.gea@gmail.com
 
 ---
 
 
-*Built as part of the Umain Mobile internship Test*
+####  🔗 Check it out! more of my mobile projects :
 
-## 🔗 Other Projects
-
-Check out more of my mobile projects :
-
-#### https://github.com/PatriciaGea/business-card-patriciagea
-#### https://github.com/PatriciaGea/plant-app-kotlin
-#### https://github.com/PatriciaGea/app-android
+#### https://github.com/PatriciaGea/business-card-patriciagea Business Card
+#### https://github.com/PatriciaGea/plant-app-kotlin App Finder
+#### https://github.com/PatriciaGea/app-android Random Messages
 
 Thank You
