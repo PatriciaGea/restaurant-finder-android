@@ -1,24 +1,28 @@
-# Restaurant Finder App `![Restaurant List](screenshots/android_logo.png)`
 
-> A Android app for finding restaurants, built with Jetpack Compose and modern Android architecture.
+
+
+<img src="screenshot/android_logo.png" width="100">  
+
+# MUNCHIES - Restaurant Finder App 
+Built with Jetpack Compose and 
+modern Android architecture.
+
+*Part of the Umain Mobile internship Test*
 
 ---
 
 ##  ✦ Screenshots
 
+<img src="screenshot/screenshot.png" width="200"> 
 
-> `![Restaurant List](screenshots/screenshot.png)`
-
-
-> `![App Demo](screenshots/demo.gif)`
 
 ---
 
 ##  ✦ Project Objective
 
-Build a mobile application for **Munchies** a Umain's new restaurant service, allowing users to:
+Build a mobile application for Restaurant Delivery, allowing users to:
 
-- Browse restaurants fetched from a live REST API
+- Browse restaurants (fetched from a live REST API)
 - Filter restaurants by category using horizontal filter chips
 - View restaurant details including open/closed status in real time
 
