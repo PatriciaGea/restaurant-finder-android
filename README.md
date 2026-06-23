@@ -1,9 +1,10 @@
 
 
 
-<img src="screenshot/android_logo.png" width="100">  
+<img src="screenshot/android_logo.png" width="200" align="right">
 
-# MUNCHIES - Restaurant Finder App 
+**✦ MUNCHIES - RESTAURANT FINDER APP** 
+
 Built with Jetpack Compose and 
 modern Android architecture.
 
@@ -11,7 +12,7 @@ modern Android architecture.
 
 ---
 
-##  ✦ Screenshots
+###  ✦ Screenshots
 
 <img src="screenshot/screenshot.png" width="200"> 
 
