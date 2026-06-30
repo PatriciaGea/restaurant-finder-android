@@ -37,6 +37,7 @@ Build a mobile application for Restaurant Delivery, allowing users to:
 | **OkHttp Logging Interceptor** | Network request debugging |
 | **Coil** | Async image loading from URLs |
 | **Navigation Compose** | Screen navigation (list → detail) |
+| **Koin** | Dependency injection |
 | **ViewModel + StateFlow** | UI state management |
 | **Kotlin Coroutines** | Asynchronous programming |
 | **Material3** | UI components and theming |
@@ -48,23 +49,30 @@ Build a mobile application for Restaurant Delivery, allowing users to:
 
 # ✦ Architecture
 
-The project follows **MVVM (Model-View-ViewModel)** architecture with a clean separation of concerns:
+The project follows **MVVM (Model-View-ViewModel)** architecture with a clean separation of concerns, wired together with **Koin** for dependency injection:
 
 ```
 app/
+├── RestaurantFinderApp.kt      # Application class, starts Koin
+├── di/
+│   └── AppModule.kt            # Koin module: provides the repository and view models
 ├── data/
-│   ├── Models.kt               # Data classes (Restaurant, Filter, OpenStatus)
-│   ├── RestaurantApi.kt        # Retrofit API interface
-│   ├── NetworkModule.kt        # Sets up the API and JSON converter
-│   └── RestaurantRepository.kt # Fetches and organizes data from the API
+│   ├── Models.kt                # Data classes (Restaurant, Filter, OpenStatus)
+│   ├── RestaurantApi.kt         # Retrofit API interface
+│   ├── NetworkModule.kt         # Sets up the API and JSON converter
+│   └── RestaurantRepository.kt  # Fetches data from the API and caches it in memory
 └── ui/
     ├── list/
     │   ├── RestaurantListScreen.kt    # List UI + Filter chips
     │   └── RestaurantListViewModel.kt # List state management
     └── detail/
         ├── RestaurantDetailScreen.kt    # Detail UI
-        └── RestaurantDetailViewModel.kt # Open/closed status fetching
+        └── RestaurantDetailViewModel.kt # Loads the restaurant and its open/closed status
 ```
+
+The package is `com.umain.restaurantfinder`, matching the application ID.
+
+View models declare `RestaurantRepository` as a required constructor dependency and let Koin supply it. This keeps the view models easy to test (a fake repository can be swapped in) and keeps object creation in one place (`AppModule.kt`) rather than spread across composables.
 
 ---
 
@@ -137,7 +145,8 @@ git clone https://github.com/PatriciaGea/restaurant-finder-android.git
 - **StateFlow** for reactive UI state, the screen automatically redraws when data changes
 - **Coroutines** with `viewModelScope` for safe async operations tied to the UI lifecycle
 - **Parallel API calls** using `async`/`awaitAll` to fetch multiple filters simultaneously
-- **Navigation Compose** with JSON-encoded arguments to pass objects between screens
+- **Navigation Compose** passing a restaurant id as a route argument, with the detail screen resolving the rest of the data itself
+- **Dependency Injection with Koin**, providing the repository and view models through a single module
 - **MVVM pattern** with clean separation between data, business logic and UI layers
 - **Retrofit + Kotlinx Serialization** for type-safe API consumption
 - **Coil** for efficient image loading and caching from remote URLs
@@ -151,11 +160,14 @@ git clone https://github.com/PatriciaGea/restaurant-finder-android.git
 ### Parallel Filter Fetching
 The API returns `filterIds` inside each restaurant, but filter details (name, icon) require separate calls. The solution was to collect all unique filter IDs across all restaurants and fetch them **in parallel** using Kotlin's `async`/`awaitAll`, reducing load time significantly compared to sequential calls.
 
-### Navigation with Complex Objects
-To pass restaurant data between screens, the app serializes objects to JSON and sends them as navigation arguments
+### Lightweight Navigation
+The detail screen only needs a restaurant id to know what to show, so that's the only thing the route carries — keeping the navigation argument simple and avoiding the need to encode or decode complex objects. `RestaurantRepository` keeps the last fetched restaurants and filters in memory, so the detail screen's view model can look the restaurant up by id and only hits the network for the open/closed status, which does need to be fresh.
+
+### Dependency Injection with Koin
+The dependency graph (repository, view models) is declared once in `AppModule.kt` and provided by Koin, which is started from the `Application` class. Screens simply ask for a view model via `koinViewModel()`. Centralizing object creation this way keeps the dependency graph explicit and makes it straightforward to substitute fakes in tests.
 
 ### Dependency Compatibility
-The project uses `compileSdk = 37` to satisfy `androidx.core:core-ktx:1.19.0` requirements, while keeping `targetSdk = 36` for runtime behavior stability. The Retrofit Kotlinx Serialization converter was migrated from the deprecated `com.jakewharton.retrofit` package to the official `com.squareup.retrofit2:converter-kotlinx-serialization`.
+The project uses `compileSdk = 37` to satisfy `androidx.core:core-ktx:1.19.0` requirements, while keeping `targetSdk = 36` for runtime behavior stability. The Retrofit Kotlinx Serialization converter uses the official `com.squareup.retrofit2:converter-kotlinx-serialization`.
 
 ---
 # ✦ Author
