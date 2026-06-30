@@ -13,7 +13,7 @@ modern Android architecture.
 # ✦ Screenshots
 
 <img src="screenshot/screenshot.png" width="165"> 
-
+<img src="screenshot/screenshot2.png" width="165"> 
 ---
 
 # ✦ Project Objective
@@ -70,16 +70,15 @@ app/
         └── RestaurantDetailViewModel.kt # Loads the restaurant and its open/closed status
 ```
 
-The package is `com.umain.restaurantfinder`, matching the application ID.
-
-View models declare `RestaurantRepository` as a required constructor dependency and let Koin supply it. This keeps the view models easy to test (a fake repository can be swapped in) and keeps object creation in one place (`AppModule.kt`) rather than spread across composables.
+View models declare `RestaurantRepository` as a required constructor dependency and let Koin supply it. 
+This keeps the view models easy to test and keeps object creation in one place (`AppModule.kt`) rather than spread across composables.
 
 ---
 
 # ✦ Features
 
 - **Restaurant List** = Displays all restaurants fetched from the API with image, name, tags, delivery time and rating
-- **Horizontal Filter Chips** = Filter icons and names fetched from the API (not hardcoded). Multiple filters can be selected simultaneously
+- **Horizontal Filter Chips** = Filter icons and names fetched from the API . Multiple filters can be selected simultaneously
 - **Real-time Open/Closed Status** = Each restaurant's status is fetched live when opening the detail screen
 - **Detail Screen** = Full-screen banner image, restaurant name, category tags and open/closed status
 - **Error Handling** = Error states with user messages
@@ -160,7 +159,7 @@ git clone https://github.com/PatriciaGea/restaurant-finder-android.git
 ### Parallel Filter Fetching
 The API returns `filterIds` inside each restaurant, but filter details (name, icon) require separate calls. The solution was to collect all unique filter IDs across all restaurants and fetch them **in parallel** using Kotlin's `async`/`awaitAll`, reducing load time significantly compared to sequential calls.
 
-### Lightweight Navigation
+### Navigation
 The detail screen only needs a restaurant id to know what to show, so that's the only thing the route carries — keeping the navigation argument simple and avoiding the need to encode or decode complex objects. `RestaurantRepository` keeps the last fetched restaurants and filters in memory, so the detail screen's view model can look the restaurant up by id and only hits the network for the open/closed status, which does need to be fresh.
 
 ### Dependency Injection with Koin
