@@ -4,7 +4,7 @@
 # ✦ MUNCHIES - RESTAURANT FINDER APP
 
 Built with Jetpack Compose and 
-modern Android architecture. <img src="screenshot/android_logo.png" width="200" align="right">
+modern Android architecture. 
 
 *Part of the Umain Mobile internship Test*
 
@@ -12,7 +12,7 @@ modern Android architecture. <img src="screenshot/android_logo.png" width="200" 
 
 # ✦ Screenshots
 
-<img src="screenshot/screenshot.png" width="165">   <img src="screenshot/gif.GIF" width="200"> 
+<img src="screenshot/screenshot.png" width="165"> 
 
 ---
 
