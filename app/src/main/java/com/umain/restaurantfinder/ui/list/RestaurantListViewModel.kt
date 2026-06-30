@@ -29,7 +29,7 @@ data class RestaurantListUiState(
 }
 
 class RestaurantListViewModel(
-    private val repository: RestaurantRepository = RestaurantRepository()
+    private val repository: RestaurantRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(RestaurantListUiState())

@@ -6,18 +6,18 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.umain.restaurantfinder.data.Filter
-import com.umain.restaurantfinder.data.Restaurant
 import com.umain.restaurantfinder.ui.detail.RestaurantDetailScreen
+import com.umain.restaurantfinder.ui.detail.RestaurantDetailViewModel
 import com.umain.restaurantfinder.ui.list.RestaurantListScreen
 import com.umain.restaurantfinder.ui.theme.RestaurantfinderandroidTheme
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
+import org.koin.androidx.compose.koinViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,36 +35,24 @@ class MainActivity : ComponentActivity() {
                         composable("list") {
                             RestaurantListScreen(
                                 paddingValues = paddingValues,
-                                onRestaurantClick = { restaurant, filters ->
-                                    val restaurantJson = java.net.URLEncoder.encode(
-                                        Json.encodeToString(restaurant), "UTF-8"
-                                    )
-                                    val filtersJson = java.net.URLEncoder.encode(
-                                        Json.encodeToString(filters), "UTF-8"
-                                    )
-                                    navController.navigate("detail/$restaurantJson/$filtersJson")
+                                onRestaurantClick = { restaurant ->
+                                    navController.navigate("detail/${restaurant.id}")
                                 }
                             )
                         }
-                        composable("detail/{restaurantJson}/{filtersJson}") { backStackEntry ->
-                            val restaurantEncoded = backStackEntry.arguments
-                                ?.getString("restaurantJson") ?: return@composable
-                            val filtersEncoded = backStackEntry.arguments
-                                ?.getString("filtersJson") ?: return@composable
+                        composable("detail/{restaurantId}") { backStackEntry ->
+                            val restaurantId = backStackEntry.arguments
+                                ?.getString("restaurantId") ?: return@composable
 
-                            val restaurant = remember(restaurantEncoded) {
-                                Json.decodeFromString<Restaurant>(
-                                    java.net.URLDecoder.decode(restaurantEncoded, "UTF-8")
-                                )
+                            val viewModel: RestaurantDetailViewModel = koinViewModel()
+                            val uiState by viewModel.uiState.collectAsState()
+
+                            LaunchedEffect(restaurantId) {
+                                viewModel.loadRestaurant(restaurantId)
                             }
-                            val filters = remember(filtersEncoded) {
-                                Json.decodeFromString<List<Filter>>(
-                                    java.net.URLDecoder.decode(filtersEncoded, "UTF-8")
-                                )
-                            }
+
                             RestaurantDetailScreen(
-                                restaurant = restaurant,
-                                filters = filters,
+                                uiState = uiState,
                                 onBack = { navController.popBackStack() }
                             )
                         }

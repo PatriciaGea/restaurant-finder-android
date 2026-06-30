@@ -31,6 +31,7 @@ import androidx.compose.ui.res.painterResource
 import com.umain.restaurantfinder.R
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import org.koin.androidx.compose.koinViewModel
 
 
 val DarkText = Color(0xFF1F2B2E)
@@ -42,8 +43,8 @@ val NegativeRed = Color(0xFFC0392B)
 
 @Composable
 fun RestaurantListScreen(
-    viewModel: RestaurantListViewModel = androidx.lifecycle.viewmodel.compose.viewModel(),
-    onRestaurantClick: (Restaurant, List<Filter>) -> Unit,
+    viewModel: RestaurantListViewModel = koinViewModel(),
+    onRestaurantClick: (Restaurant) -> Unit,
     paddingValues: PaddingValues = PaddingValues()
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -122,7 +123,7 @@ fun RestaurantListScreen(
                         RestaurantCard(
                             restaurant = restaurant,
                             filters = uiState.filters,
-                            onClick = { onRestaurantClick(restaurant, uiState.filters) }
+                            onClick = { onRestaurantClick(restaurant) }
                         )
                         Spacer(modifier = Modifier.height(16.dp))
                     }

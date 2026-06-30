@@ -16,8 +16,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.umain.restaurantfinder.data.Filter
-import com.umain.restaurantfinder.data.Restaurant
 import com.umain.restaurantfinder.ui.list.DarkText
 import com.umain.restaurantfinder.ui.list.NegativeRed
 import com.umain.restaurantfinder.ui.list.PositiveGreen
@@ -25,35 +23,93 @@ import com.umain.restaurantfinder.ui.list.SubtitleGray
 
 @Composable
 fun RestaurantDetailScreen(
-    restaurant: Restaurant,
-    filters: List<Filter> = emptyList(),
-    viewModel: RestaurantDetailViewModel = androidx.lifecycle.viewmodel.compose.viewModel(),
+    uiState: RestaurantDetailUiState,
     onBack: () -> Unit
 ) {
-    val uiState by viewModel.uiState.collectAsState()
-
-    LaunchedEffect(restaurant.id) {
-        viewModel.loadOpenStatus(restaurant.id)
-    }
-
-    val tagNames = restaurant.filterIds
-        .mapNotNull { id -> filters.find { it.id == id }?.name }
-        .joinToString(" · ")
+    val restaurant = uiState.restaurant
 
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFFF8F8F8))
     ) {
-        AsyncImage(
-            model = restaurant.imageUrl,
-            contentDescription = restaurant.name,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(220.dp)
-                .align(Alignment.TopCenter),
-            contentScale = ContentScale.Crop
-        )
+        if (restaurant == null) {
+            when {
+                uiState.isLoading -> CircularProgressIndicator(
+                    modifier = Modifier.align(Alignment.Center)
+                )
+                uiState.errorMessage != null -> Text(
+                    text = uiState.errorMessage,
+                    color = NegativeRed,
+                    modifier = Modifier
+                        .align(Alignment.Center)
+                        .padding(24.dp)
+                )
+            }
+        } else {
+            val tagNames = restaurant.filterIds
+                .mapNotNull { id -> uiState.filters.find { it.id == id }?.name }
+                .joinToString(" · ")
+
+            AsyncImage(
+                model = restaurant.imageUrl,
+                contentDescription = restaurant.name,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(220.dp)
+                    .align(Alignment.TopCenter),
+                contentScale = ContentScale.Crop
+            )
+
+            Card(
+                modifier = Modifier
+                    .padding(start = 16.dp, top = 175.dp)
+                    .width(343.dp)
+                    .defaultMinSize(minHeight = 144.dp),
+                shape = RoundedCornerShape(12.dp),
+                elevation = CardDefaults.cardElevation(
+                    defaultElevation = 4.dp
+                ),
+                colors = CardDefaults.cardColors(
+                    containerColor = Color.White
+                )
+            )  {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Text(
+                        text = restaurant.name,
+                        color = DarkText,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 22.sp
+                    )
+                    if (tagNames.isNotEmpty()) {
+                        Spacer(modifier = Modifier.height(6.dp))
+                        Text(
+                            text = tagNames,
+                            color = SubtitleGray,
+                            fontSize = 14.sp
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(8.dp))
+                    when {
+                        uiState.isLoading -> CircularProgressIndicator(modifier = Modifier.size(20.dp))
+                        uiState.errorMessage != null -> Text(
+                            text = uiState.errorMessage,
+                            color = NegativeRed,
+                            fontSize = 14.sp
+                        )
+                        else -> {
+                            val isOpen = uiState.isOpen == true
+                            Text(
+                                text = if (isOpen) "Open" else "Closed",
+                                color = if (isOpen) PositiveGreen else NegativeRed,
+                                fontWeight = FontWeight.SemiBold,
+                                fontSize = 18.sp
+                            )
+                        }
+                    }
+                }
+            }
+        }
 
         Box(
             modifier = Modifier
@@ -70,55 +126,6 @@ fun RestaurantDetailScreen(
                     .size(63.dp)
                     .align(Alignment.Center)
             )
-        }
-
-        Card(
-            modifier = Modifier
-                .padding(start = 16.dp, top = 175.dp)
-                .width(343.dp)
-                .defaultMinSize(minHeight = 144.dp),
-            shape = RoundedCornerShape(12.dp),
-            elevation = CardDefaults.cardElevation(
-                defaultElevation = 4.dp
-            ),
-            colors = CardDefaults.cardColors(
-                containerColor = Color.White
-            )
-        )  {
-            Column(modifier = Modifier.padding(16.dp)) {
-                Text(
-                    text = restaurant.name,
-                    color = DarkText,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 22.sp
-                )
-                if (tagNames.isNotEmpty()) {
-                    Spacer(modifier = Modifier.height(6.dp))
-                    Text(
-                        text = tagNames,
-                        color = SubtitleGray,
-                        fontSize = 14.sp
-                    )
-                }
-                Spacer(modifier = Modifier.height(8.dp))
-                when {
-                    uiState.isLoading -> CircularProgressIndicator(modifier = Modifier.size(20.dp))
-                    uiState.errorMessage != null -> Text(
-                        text = uiState.errorMessage ?: "",
-                        color = NegativeRed,
-                        fontSize = 14.sp
-                    )
-                    else -> {
-                        val isOpen = uiState.isOpen == true
-                        Text(
-                            text = if (isOpen) "Open" else "Closed",
-                            color = if (isOpen) PositiveGreen else NegativeRed,
-                            fontWeight = FontWeight.SemiBold,
-                            fontSize = 18.sp
-                        )
-                    }
-                }
-            }
         }
     }
 }
