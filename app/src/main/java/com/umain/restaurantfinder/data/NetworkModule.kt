@@ -1,4 +1,4 @@
-package com.example.restaurant_finder_android.data
+package com.umain.restaurantfinder.data
 
 import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient

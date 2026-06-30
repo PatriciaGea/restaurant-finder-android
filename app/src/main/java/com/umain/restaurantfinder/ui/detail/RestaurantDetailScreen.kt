@@ -1,4 +1,4 @@
-package com.example.restaurant_finder_android.ui.detail
+package com.umain.restaurantfinder.ui.detail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -16,12 +16,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.example.restaurant_finder_android.data.Filter
-import com.example.restaurant_finder_android.data.Restaurant
-import com.example.restaurant_finder_android.ui.list.DarkText
-import com.example.restaurant_finder_android.ui.list.NegativeRed
-import com.example.restaurant_finder_android.ui.list.PositiveGreen
-import com.example.restaurant_finder_android.ui.list.SubtitleGray
+import com.umain.restaurantfinder.data.Filter
+import com.umain.restaurantfinder.data.Restaurant
+import com.umain.restaurantfinder.ui.list.DarkText
+import com.umain.restaurantfinder.ui.list.NegativeRed
+import com.umain.restaurantfinder.ui.list.PositiveGreen
+import com.umain.restaurantfinder.ui.list.SubtitleGray
 
 @Composable
 fun RestaurantDetailScreen(

@@ -1,4 +1,4 @@
-package com.example.restaurant_finder_android.ui.list
+package com.umain.restaurantfinder.ui.list
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -22,13 +22,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.example.restaurant_finder_android.data.Filter
-import com.example.restaurant_finder_android.data.Restaurant
+import com.umain.restaurantfinder.data.Filter
+import com.umain.restaurantfinder.data.Restaurant
 import androidx.compose.foundation.Image
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.painterResource
-import com.example.restaurant_finder_android.R
+import com.umain.restaurantfinder.R
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 

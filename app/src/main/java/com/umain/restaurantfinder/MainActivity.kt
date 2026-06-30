@@ -1,4 +1,4 @@
-package com.example.restaurant_finder_android
+package com.umain.restaurantfinder
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,11 +11,11 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.restaurant_finder_android.data.Filter
-import com.example.restaurant_finder_android.data.Restaurant
-import com.example.restaurant_finder_android.ui.detail.RestaurantDetailScreen
-import com.example.restaurant_finder_android.ui.list.RestaurantListScreen
-import com.example.restaurant_finder_android.ui.theme.RestaurantfinderandroidTheme
+import com.umain.restaurantfinder.data.Filter
+import com.umain.restaurantfinder.data.Restaurant
+import com.umain.restaurantfinder.ui.detail.RestaurantDetailScreen
+import com.umain.restaurantfinder.ui.list.RestaurantListScreen
+import com.umain.restaurantfinder.ui.theme.RestaurantfinderandroidTheme
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 

@@ -1,4 +1,4 @@
-package com.example.restaurant_finder_android
+package com.umain.restaurantfinder
 
 import org.junit.Test
 

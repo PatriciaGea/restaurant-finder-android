@@ -1,4 +1,4 @@
-package com.example.restaurant_finder_android.data
+package com.umain.restaurantfinder.data
 
 import retrofit2.http.GET
 import retrofit2.http.Path

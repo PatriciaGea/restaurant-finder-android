@@ -1,4 +1,4 @@
-package com.example.restaurant_finder_android.ui.theme
+package com.umain.restaurantfinder.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

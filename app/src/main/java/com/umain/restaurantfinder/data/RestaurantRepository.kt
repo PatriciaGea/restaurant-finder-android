@@ -1,4 +1,4 @@
-package com.example.restaurant_finder_android.data
+package com.umain.restaurantfinder.data
 
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll

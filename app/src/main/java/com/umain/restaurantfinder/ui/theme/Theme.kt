@@ -1,4 +1,4 @@
-package com.example.restaurant_finder_android.ui.theme
+package com.umain.restaurantfinder.ui.theme
 
 
 import android.os.Build

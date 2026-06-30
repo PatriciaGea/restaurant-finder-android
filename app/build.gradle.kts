@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.restaurant_finder_android"
+    namespace = "com.umain.restaurantfinder"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.example.restaurant_finder_android"
+        applicationId = "com.umain.restaurantfinder"
         minSdk = 24
         targetSdk = 36
         versionCode = 1

@@ -1,9 +1,9 @@
-package com.example.restaurant_finder_android.ui.detail
+package com.umain.restaurantfinder.ui.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.restaurant_finder_android.data.Restaurant
-import com.example.restaurant_finder_android.data.RestaurantRepository
+import com.umain.restaurantfinder.data.Restaurant
+import com.umain.restaurantfinder.data.RestaurantRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
