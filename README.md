@@ -12,9 +12,8 @@ modern Android architecture.
 
 # ✦ Screenshots
 
-<img src="screenshot/screenshot.png" width="165"> 
-<img src="screenshot/screenshot2.png" width="165"> 
----
+<img src="screenshot/screenshot.png" width="165"> <img src="screenshot/screenshot2.png" width="165"> 
+
 
 # ✦ Project Objective
 
